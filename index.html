@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Controller</title>
+    <style>
+        body { text-align: center; font-family: sans-serif; background: #121212; color: white; margin-top: 50px; }
+        button { padding: 20px 40px; font-size: 20px; border-radius: 10px; border: none; background: #007bff; color: white; cursor: pointer; }
+        button:active { background: #0056b3; }
+        #status { margin-top: 20px; color: #aaa; }
+    </style>
+</head>
+<body>
+    <h2>Build Logic Remote</h2>
+    <button onclick="sendSignal()">PRESS TO ACTIVATE</button>
+    <p id="status"></p>
+
+    <script>
+        // Replace this with your copied Webhook.site URL
+        const WEBHOOK_URL = "https://github.com/marshallpconor-wq/idk.git";
+
+        function sendSignal() {
+            document.getElementById('status').innerText = "Sending signal...";
+            fetch(WEBHOOK_URL, { method: "POST", body: "1" })
+            .then(() => { document.getElementById('status').innerText = "Signal Sent!"; })
+            .catch(() => { document.getElementById('status').innerText = "Error sending signal."; });
+        }
+    </script>
+</body>
+</html>
+
