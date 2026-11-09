@@ -1,31 +1,54 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roblox Controller</title>
     <style>
-        body { text-align: center; font-family: sans-serif; background: #121212; color: white; margin-top: 50px; }
-        button { padding: 20px 40px; font-size: 20px; border-radius: 10px; border: none; background: #007bff; color: white; cursor: pointer; }
-        button:active { background: #0056b3; }
-        #status { margin-top: 20px; color: #aaa; }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #1a1a1a;
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 20px;
+            font-weight: bold;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        button:active {
+            background-color: #0056b3;
+            transform: scale(0.98);
+        }
     </style>
 </head>
 <body>
-    <h2>Build Logic Remote</h2>
+
     <button onclick="sendSignal()">PRESS TO ACTIVATE</button>
-    <p id="status"></p>
 
     <script>
-        // Replace this with your copied Webhook.site URL
-        const WEBHOOK_URL = "https://webhook.site/eb9f63f9-a559-4092-a0f5-4811ddc5bcd6";
-
         function sendSignal() {
-            document.getElementById('status').innerText = "Sending signal...";
-            fetch(WEBHOOK_URL, { method: "POST", body: "1" })
-            .then(() => { document.getElementById('status').innerText = "Signal Sent!"; })
-            .catch(() => { document.getElementById('status').innerText = "Error sending signal."; });
+            // Replace the URL below with your actual Beeceptor endpoint
+            fetch('https://myrobloxbtn.free.beeceptor.com', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ active: true })
+            })
+            .then(response => console.log('Signal sent!'))
+            .catch(error => console.error('Error:', error));
         }
     </script>
+
 </body>
 </html>
-
